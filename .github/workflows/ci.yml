@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * 1"   # weekly link check, Mondays 06:00 UTC
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install -r requirements.txt
+      - name: Validate data files
+        run: python scripts/validate.py
+      - name: README is up to date with data
+        run: |
+          python scripts/build_readme.py
+          # the stats line contains today's date; ignore it in the comparison
+          git diff --ignore-matching-lines='last generated' --exit-code README.md \
+            || (echo "README.md is out of date. Run: python scripts/build_readme.py" && exit 1)
+
+  links:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress --max-concurrency 4 --accept 200,429 README.md docs/*.md
+          fail: true

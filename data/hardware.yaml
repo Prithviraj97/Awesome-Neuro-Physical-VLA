@@ -1,0 +1,9 @@
+# Short reference notes on hardware that appears in the latency table.
+# Fill from vendor datasheets and cite them; numbers here are placeholders.
+devices:
+  - name: "Jetson AGX Orin 32GB"
+    memory: "32 GB unified LPDDR5"
+    datasheet: null
+  - name: "RTX 4090"
+    memory: "24 GB GDDR6X"
+    datasheet: null

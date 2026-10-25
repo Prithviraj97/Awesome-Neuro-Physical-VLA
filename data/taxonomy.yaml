@@ -1,0 +1,49 @@
+# Taxonomy codes. Shared with the survey's extraction schema so the repo
+# doubles as the survey's released dataset.
+axes:
+  I:
+    title: "Spatial representation and memory"
+    blurb: "How streaming 2D, depth and point data become the spatial state a policy reads."
+    categories:
+      1A: {title: "2D patch tokens", rule: "Policy consumes ViT/CNN patch features of RGB frames only."}
+      1B: {title: "Explicit 3D input", rule: "Point cloud, voxel grid, or lifted features with metric geometry."}
+      1C: {title: "3D-aware encodings on 2D backbones", rule: "2D tokens plus depth or 3D position encodings; no persistent 3D structure."}
+      1D: {title: "Persistent 3D scene memory", rule: "A 3D representation persists across frames (fusion, Gaussians, feature fields). Note online vs offline construction."}
+  II:
+    title: "Execution timing and delay compensation"
+    blurb: "How slow model outputs reach fast actuators without stalling or drifting."
+    categories:
+      2A: {title: "Synchronous chunk execution", rule: "Chunk executed open-loop while the next inference waits or uses a frozen observation."}
+      2B: {title: "Chunk smoothing and ensembling", rule: "Overlapping chunks blended (temporal ensembling and successors)."}
+      2C: {title: "Asynchronous chunk inpainting", rule: "Next chunk generated during execution, conditioned on the executed prefix."}
+      2D: {title: "Dual-system learned fast policy", rule: "A separate fast network consumes a slow latent at a higher rate."}
+      2E: {title: "Model-based bridges", rule: "Stale output propagated with a model and tracked by MPC/QP."}
+      2F: {title: "Safety filters", rule: "CBF, HJ reachability or similar layer overrides the learned command."}
+  III:
+    title: "World models and physical priors"
+    blurb: "Predictive models of what actions do, and how prediction error is used."
+    categories:
+      3A: {title: "Pixel and video world models", rule: "Predicts future RGB frames or video latents."}
+      3B: {title: "Flow, track and pose models", rule: "Predicts 2D/3D point tracks, scene flow or object poses."}
+      3C: {title: "Analytic, differentiable and residual physics", rule: "Physics prior plus learned or adaptive residual, or simulation used for skill learning."}
+  IV:
+    title: "Edge execution"
+    blurb: "Making the models fit the latency, memory and power budget of onboard hardware."
+    categories:
+      4A: {title: "Quantization", rule: "Reduced-precision weights, activations or KV cache."}
+      4B: {title: "Token reduction, caching, early exit", rule: "Fewer tokens or layers per step."}
+      4C: {title: "Alternative backbones", rule: "State-space or recurrent models replace attention."}
+      4D: {title: "Small and distilled policies", rule: "Compact model by design or distilled from a larger teacher."}
+      4E: {title: "Runtime, scheduling and solvers", rule: "Pipelining, async runtimes, zero-copy memory, embedded optimization solvers."}
+  T:
+    title: "Simulators, benchmarks and infrastructure"
+    blurb: "Where and how these systems are trained and measured."
+    categories:
+      T1: {title: "Simulators", rule: "Physics simulators and robot-learning frameworks."}
+      T2: {title: "Benchmarks and evaluation", rule: "Task suites, metrics and evaluation methodology."}
+      T3: {title: "Training infrastructure", rule: "Training and fine-tuning infrastructure."}
+  S:
+    title: "Related surveys"
+    blurb: "Surveys this list builds on or differs from."
+    categories:
+      S1: {title: "Surveys", rule: "Survey or review papers."}

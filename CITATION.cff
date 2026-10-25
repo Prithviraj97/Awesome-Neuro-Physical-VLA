@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this list, please cite it as below."
+title: "Awesome Neuro-Physical VLA: a taxonomy-tagged list of real-time vision-language-action systems"
+type: dataset
+authors:
+  - family-names: "Singh"
+    given-names: "Prithvi Raj"
+    affiliation: "University of Louisiana at Lafayette"
+    # orcid: "https://orcid.org/0000-0000-0000-0000"
+repository-code: "https://github.com/prithviraj97/Awesome-Neuro-Physical-VLA"
+license: CC0-1.0
+version: "0.1.0"
+date-released: "2026-11-01"
+keywords:
+  - vision-language-action
+  - robot learning
+  - real-time control
+  - edge computing
+  - world models

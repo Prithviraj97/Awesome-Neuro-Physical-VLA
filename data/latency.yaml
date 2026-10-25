@@ -1,0 +1,85 @@
+# Timing records. A row appears in the README only when verified: true and
+# every required field is filled. This keeps the table honest: a number
+# without hardware, precision and a source is not comparable to anything.
+#
+# Required fields
+#   paper            id from papers.yaml
+#   kind             policy | controller
+#   origin           reported (from the paper) | measured (you ran it)
+#   latency_ms       number or "a-b" range, per inference call (policy) or per solve (controller)
+#   what_is_timed    e.g. "backbone + action head, excl. preprocessing"
+#   statistic        single | mean | mean±std | p50/p95/p99
+#   hardware         exact device, e.g. "RTX 4090", "Jetson AGX Orin 32GB (MAXN)"
+#   precision        fp32 | bf16 | fp16 | int8 | int4 | n/a
+#   source           "Table 3", "Sec. 5.2", or path to your benchmark log
+# Optional
+#   params, action_rate_hz, chunk_len, power_w, notes
+#
+# Rows from the original README are kept below with their values but
+# verified: false, because their sources were not recorded. Check each
+# against the paper before publishing it.
+
+records:
+  - paper: openvla
+    kind: policy
+    origin: reported
+    latency_ms: null        # original README said ~320 ms; find the figure in the paper
+    what_is_timed: null
+    statistic: null
+    hardware: null          # original README: "RTX 4090 / A100" - pick the one the number refers to
+    precision: null
+    params: "7B"
+    source: null
+    verified: false
+
+  - paper: openvla_oft
+    kind: policy
+    origin: reported
+    latency_ms: null        # original README: ~40-85 ms
+    what_is_timed: null
+    statistic: null
+    hardware: null
+    precision: null
+    params: "7B"
+    source: null
+    verified: false
+
+  - paper: pi0
+    kind: policy
+    origin: reported
+    latency_ms: null        # original README: ~25-50 ms; check the paper's own timing breakdown
+    what_is_timed: null
+    statistic: null
+    hardware: null
+    precision: null
+    params: "3B"
+    source: null
+    verified: false
+
+  - paper: dp3
+    kind: policy
+    origin: reported
+    latency_ms: null        # original README: ~12-20 ms
+    what_is_timed: null
+    statistic: null
+    hardware: null
+    precision: null
+    source: null
+    verified: false
+
+  - paper: tinympc
+    kind: controller
+    origin: reported
+    latency_ms: null        # original README: < 0.2 ms; record solve time for a stated problem size
+    what_is_timed: "one MPC solve"
+    statistic: null
+    hardware: null          # name the microcontroller used in the paper
+    precision: n/a
+    source: null
+    notes: "Record state/input dimension and horizon; solve time depends on them."
+    verified: false
+
+# RTC was removed from this table: it is an execution method layered on a
+# policy, not a model with its own inference latency. It hides latency from
+# the robot rather than removing it ("0 ms" was misleading). Report it as a
+# separate row only as "policy X with RTC" vs "policy X without RTC".

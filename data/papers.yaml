@@ -1,0 +1,396 @@
+# Single source of truth for the paper list. README sections are generated
+# from this file by scripts/build_readme.py. Do not edit the generated parts
+# of README.md by hand.
+#
+# Fields
+#   id          short unique key (used by latency.yaml)
+#   title       exact paper title
+#   authors     "First Author et al." is fine
+#   year        first public year
+#   venue       peer-reviewed venue, or "arXiv" / "Tech report" / "Blog"
+#   arxiv       arXiv id without version, if any
+#   url         project page or paper URL if no arXiv id
+#   code        code URL if released
+#   categories  taxonomy codes from data/taxonomy.yaml; first code = primary
+#   note        one line, your own words, what it contributes to THIS list
+#   verified    true only after you have opened the paper and checked
+#               title, authors, venue, id and that the note is accurate.
+#               Unverified entries are listed with a marker in the README.
+#
+# Entries below were seeded from memory and the original README. Run
+# scripts/check_arxiv.py, then read each paper before setting verified: true.
+
+- id: rt2
+  title: "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control"
+  authors: "Brohan et al."
+  year: 2023
+  venue: "CoRL 2023"
+  arxiv: "2307.15818"
+  categories: [1A, 2A]
+  note: "Co-fine-tunes a web-scale VLM to emit discretized actions as text tokens; the reference point for monolithic VLAs."
+  verified: false
+
+- id: openvla
+  title: "OpenVLA: An Open-Source Vision-Language-Action Model"
+  authors: "Kim et al."
+  year: 2024
+  venue: "CoRL 2024"
+  arxiv: "2406.09246"
+  code: "https://github.com/openvla/openvla"
+  categories: [1A, 2A, 4A]
+  note: "Open 7B autoregressive VLA; reports quantized inference, making it the usual baseline for edge latency studies."
+  verified: false
+
+- id: openvla_oft
+  title: "Fine-Tuning Vision-Language-Action Models: Optimizing Speed and Success"
+  authors: "Kim, Finn, Liang"
+  year: 2025
+  venue: "RSS 2025"
+  arxiv: "2502.19645"
+  categories: [2A, 4B]
+  note: "Parallel decoding with action chunking and continuous actions; large throughput gains over autoregressive OpenVLA."
+  verified: false
+
+- id: pi0
+  title: "π0: A Vision-Language-Action Flow Model for General Robot Control"
+  authors: "Black et al."
+  year: 2024
+  venue: "RSS 2025"
+  arxiv: "2410.24164"
+  code: "https://github.com/Physical-Intelligence/openpi"
+  categories: [2A, 1A]
+  note: "VLM backbone plus a flow-matching action expert producing continuous action chunks; executes chunks synchronously by default."
+  verified: false
+
+- id: rtc
+  title: "Real-Time Execution of Action Chunking Flow Policies"
+  authors: "Black, Galliker, Levine"
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2506.07339"
+  categories: [2C]
+  note: "Generates the next chunk while the current one executes, treating continuity with already-committed actions as inference-time inpainting."
+  verified: false
+
+- id: smolvla
+  title: "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics"
+  authors: "Shukor et al."
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2506.01844"
+  code: "https://github.com/huggingface/lerobot"
+  categories: [4D, 2C]
+  note: "Small VLA with an asynchronous inference stack that decouples action prediction from execution."
+  verified: false
+
+- id: act
+  title: "Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware"
+  authors: "Zhao et al."
+  year: 2023
+  venue: "RSS 2023"
+  arxiv: "2304.13705"
+  categories: [2A, 2B]
+  note: "Introduces Action Chunking with Transformers (ACT) and temporal ensembling of overlapping chunks."
+  verified: false
+
+- id: diffusion_policy
+  title: "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion"
+  authors: "Chi et al."
+  year: 2023
+  venue: "RSS 2023"
+  arxiv: "2303.04137"
+  categories: [2A]
+  note: "Denoising diffusion over action sequences with receding-horizon execution; denoising steps set its latency."
+  verified: false
+
+- id: helix
+  title: "Helix: A Vision-Language-Action Model for Generalist Humanoid Control"
+  authors: "Figure AI"
+  year: 2025
+  venue: "Blog"
+  url: "https://www.figure.ai/news/helix"
+  categories: [2D]
+  note: "Industrial dual-system design: a slower VLM feeds a latent to a fast visuomotor policy. Technical report, not peer reviewed."
+  verified: false
+
+- id: gr00t_n1
+  title: "GR00T N1: An Open Foundation Model for Generalist Humanoid Robots"
+  authors: "NVIDIA et al."
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2503.14734"
+  categories: [2D]
+  note: "Dual-system VLA: a vision-language module conditions a diffusion-transformer action module running at a higher rate."
+  verified: false
+
+- id: tinympc
+  title: "TinyMPC: Model-Predictive Control on Resource-Constrained Microcontrollers"
+  authors: "Nguyen, Schoedel, Alatur, Manchester"
+  year: 2024
+  venue: "ICRA 2024"
+  arxiv: "2310.16985"
+  code: "https://github.com/TinyMPC/TinyMPC"
+  categories: [4E, 2E]
+  note: "ADMM-based convex MPC solver small and fast enough for microcontrollers; a building block for fast tracking loops under a slow planner."
+  verified: false
+
+- id: high_speed_flight
+  title: "Learning High-Speed Flight in the Wild"
+  authors: "Loquercio et al."
+  year: 2021
+  venue: "Science Robotics"
+  arxiv: "2110.05113"
+  categories: [2E]
+  note: "Sensorimotor policy for agile flight that maps sensing to receding-horizon trajectories with low end-to-end latency."
+  verified: false
+
+- id: dp3
+  title: "3D Diffusion Policy: Generalizable Visuomotor Policy Learning via Simple 3D Representations"
+  authors: "Ze et al."
+  year: 2024
+  venue: "RSS 2024"
+  arxiv: "2403.03954"
+  categories: [1B, 2A]
+  note: "Conditions a diffusion policy on a compact encoding of a sparse point cloud; strong sample efficiency over image inputs."
+  verified: false
+
+- id: perceiver_actor
+  title: "Perceiver-Actor: A Multi-Task Transformer for Robotic Manipulation"
+  authors: "Shridhar, Manuelli, Fox"
+  year: 2022
+  venue: "CoRL 2022"
+  arxiv: "2209.05451"
+  categories: [1B]
+  note: "Voxelized observation and action space with a Perceiver transformer; predicts next keyframe poses."
+  verified: false
+
+- id: vla3d
+  title: "3D-VLA: A 3D Vision-Language-Action Generative World Model"
+  authors: "Zhen et al."
+  year: 2024
+  venue: "ICML 2024"
+  arxiv: "2403.09631"
+  categories: [1B, 3A]
+  note: "3D-grounded VLA that also generates goal images and point clouds as an embodied world model."
+  verified: false
+
+- id: spatialvla
+  title: "SpatialVLA: Exploring Spatial Representations for Visual-Language-Action Model"
+  authors: "Qu et al."
+  year: 2025
+  venue: "RSS 2025"
+  arxiv: "2501.15830"
+  categories: [1C]
+  note: "Adds egocentric 3D position encodings to 2D visual tokens and adaptive action grids; no persistent 3D memory."
+  verified: false
+
+- id: splatsim
+  title: "SplatSim: Zero-Shot Sim2Real Transfer of RGB Manipulation Policies Using Gaussian Splatting"
+  authors: "Qureshi et al."
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2409.10161"
+  categories: [1D, T1]
+  note: "Uses Gaussian splatting as a renderer to produce photorealistic training data in simulation; an offline data-generation use of 3DGS."
+  verified: false
+
+- id: unipi
+  title: "Learning Universal Policies via Text-Guided Video Generation"
+  authors: "Du et al."
+  year: 2023
+  venue: "NeurIPS 2023"
+  arxiv: "2302.00111"
+  categories: [3A]
+  note: "Plans by generating a video of the task, then recovers actions with an inverse dynamics model."
+  verified: false
+
+- id: genie
+  title: "Genie: Generative Interactive Environments"
+  authors: "Bruce et al."
+  year: 2024
+  venue: "ICML 2024"
+  arxiv: "2402.15391"
+  categories: [3A]
+  note: "Action-controllable video world model learned from unlabeled video with latent actions; far from control-loop rates."
+  verified: false
+
+- id: atm
+  title: "Any-point Trajectory Modeling for Policy Learning"
+  authors: "Wen et al."
+  year: 2024
+  venue: "RSS 2024"
+  arxiv: "2401.00025"
+  categories: [3B]
+  note: "Predicts future trajectories of arbitrary image points and conditions the policy on them."
+  verified: false
+
+- id: track2act
+  title: "Track2Act: Predicting Point Tracks from Internet Videos enables Generalizable Robot Manipulation"
+  authors: "Bharadhwaj et al."
+  year: 2024
+  venue: "ECCV 2024"
+  arxiv: "2405.01527"
+  categories: [3B, 3C]
+  note: "Predicts point tracks from web video and corrects the resulting open-loop plan with a learned residual policy."
+  verified: false
+
+- id: general_flow
+  title: "General Flow as Foundation Affordance for Scalable Robot Learning"
+  authors: "Yuan et al."
+  year: 2024
+  venue: "CoRL 2024"
+  arxiv: "2401.11439"
+  categories: [3B]
+  note: "Predicts 3D point flow as an embodiment-agnostic intermediate representation for manipulation."
+  verified: false
+
+- id: tossingbot
+  title: "TossingBot: Learning to Throw Arbitrary Objects with Residual Physics"
+  authors: "Zeng et al."
+  year: 2020
+  venue: "IEEE T-RO"
+  arxiv: "1903.11239"
+  categories: [3C]
+  note: "Analytical projectile model plus a learned residual for throwing; the canonical residual-physics example."
+  verified: false
+
+- id: gen2sim
+  title: "Gen2Sim: Scaling up Robot Learning in Simulation with Generative Models"
+  authors: "Katara, Xian, Fragkiadaki"
+  year: 2023
+  venue: "arXiv"
+  arxiv: "2310.18308"
+  categories: [3C, T1]
+  note: "Generates simulation assets and tasks with generative models to scale skill learning in simulation."
+  verified: false
+
+- id: awq
+  title: "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration"
+  authors: "Lin et al."
+  year: 2024
+  venue: "MLSys 2024"
+  arxiv: "2306.00978"
+  categories: [4A]
+  note: "Weight-only low-bit quantization guided by activation statistics; widely used for VLM backbones on edge GPUs."
+  verified: false
+
+- id: smoothquant
+  title: "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models"
+  authors: "Xiao et al."
+  year: 2023
+  venue: "ICML 2023"
+  arxiv: "2211.10438"
+  categories: [4A]
+  note: "Moves activation outliers into weights so both can use 8-bit; W8A8 inference for transformer backbones."
+  verified: false
+
+- id: tinyvla
+  title: "TinyVLA: Towards Fast, Data-Efficient Vision-Language-Action Models for Robotic Manipulation"
+  authors: "Wen et al."
+  year: 2025
+  venue: "IEEE RA-L"
+  arxiv: "2409.12514"
+  categories: [4D]
+  note: "Compact VLAs (roughly 0.4B to 1.3B parameters) with a diffusion action head; faster inference than 7B VLAs."
+  verified: false
+
+- id: robomamba
+  title: "RoboMamba: Efficient Vision-Language-Action Model for Robotic Reasoning and Manipulation"
+  authors: "Liu et al."
+  year: 2024
+  venue: "NeurIPS 2024"
+  arxiv: "2406.04339"
+  categories: [4C]
+  note: "Mamba backbone in place of attention for a VLA, targeting lower inference cost."
+  verified: false
+
+- id: ltc
+  title: "Liquid Time-constant Networks"
+  authors: "Hasani et al."
+  year: 2021
+  venue: "AAAI 2021"
+  arxiv: "2006.04439"
+  categories: [4C]
+  note: "Continuous-time recurrent cells with input-dependent time constants; compact controllers for streaming input."
+  verified: false
+
+- id: wake_vision
+  title: "Wake Vision: A Tailored Dataset and Benchmark Suite for TinyML Computer Vision Applications"
+  authors: "Banbury et al."
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2405.00892"
+  categories: [T2, 4D]
+  note: "Person-detection dataset and benchmark for microcontroller-scale vision models; a reference for the TinyML end of the spectrum."
+  verified: false
+
+- id: maniskill3
+  title: "ManiSkill3: GPU Parallelized Robotics Simulation and Rendering for Generalizable Embodied AI"
+  authors: "Tao et al."
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2410.00425"
+  code: "https://github.com/haosulab/ManiSkill"
+  categories: [T1]
+  note: "GPU-parallel simulation and rendering for manipulation; fast enough for large-scale policy training and evaluation."
+  verified: false
+
+- id: isaac_lab
+  title: "Isaac Lab"
+  authors: "NVIDIA"
+  year: 2024
+  venue: "Software"
+  url: "https://github.com/isaac-sim/IsaacLab"
+  categories: [T1]
+  note: "Robot-learning framework on Isaac Sim with GPU-parallel environments."
+  verified: false
+
+- id: rlinf_vla
+  title: "RLinf-VLA: A Unified and Efficient Framework for VLA+RL Training"
+  authors: "RLinf team"
+  year: 2025
+  venue: "arXiv"
+  url: "https://github.com/RLinf/RLinf"
+  categories: [T3]
+  note: "Infrastructure for reinforcement-learning fine-tuning of VLAs. Check title and arXiv id."
+  verified: false
+
+- id: survey_vla_ma
+  title: "A Survey on Vision-Language-Action Models for Embodied AI"
+  authors: "Ma et al."
+  year: 2024
+  venue: "arXiv"
+  arxiv: "2405.14093"
+  categories: [S1]
+  note: "Broad VLA taxonomy: components, low-level policies, high-level planners."
+  verified: false
+
+- id: survey_efficient_vla_yu
+  title: "A Survey on Efficient Vision-Language-Action Models"
+  authors: "Yu et al."
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2510.24795"
+  categories: [S1]
+  note: "Efficiency across model design, training and data collection."
+  verified: false
+
+- id: survey_efficient_vla_guan
+  title: "Efficient Vision-Language-Action Models for Embodied Manipulation: A Systematic Survey"
+  authors: "Guan et al."
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2510.17111"
+  categories: [S1]
+  note: "Efficiency techniques for edge deployment of VLAs."
+  verified: false
+
+- id: survey_world_models_li
+  title: "A Comprehensive Survey on World Models for Embodied AI"
+  authors: "Li et al."
+  year: 2025
+  venue: "arXiv"
+  arxiv: "2510.16732"
+  categories: [S1]
+  note: "Three-axis taxonomy of world models: functionality, temporal modeling, spatial representation."
+  verified: false

@@ -1,0 +1,39 @@
+name: Add a paper
+description: Suggest a paper for the list
+labels: [new paper]
+body:
+  - type: input
+    id: title
+    attributes: {label: Title, description: Exact title}
+    validations: {required: true}
+  - type: input
+    id: link
+    attributes: {label: Link, description: arXiv, venue page or project page}
+    validations: {required: true}
+  - type: input
+    id: venue
+    attributes: {label: Venue and year, placeholder: "CoRL 2025, or arXiv 2025"}
+  - type: dropdown
+    id: axis
+    attributes:
+      label: Primary axis
+      options:
+        - "I: Spatial representation and memory"
+        - "II: Execution timing and delay compensation"
+        - "III: World models and physical priors"
+        - "IV: Edge execution"
+        - "Simulators, benchmarks and infrastructure"
+        - "Survey"
+        - "Not sure"
+    validations: {required: true}
+  - type: textarea
+    id: why
+    attributes:
+      label: What does it change in the loop?
+      description: One or two sentences. Which of rate, delay, stale-command correction, or evaluation under motion does it address?
+    validations: {required: true}
+  - type: textarea
+    id: timing
+    attributes:
+      label: Timing numbers (optional)
+      description: Latency, hardware, precision, and where in the paper they appear.
